@@ -1,0 +1,22 @@
+name: test app
+on:
+     push:
+          branches:
+               - main
+     workflow_dispatch:
+jobs:
+     test:
+          runs-on: ubuntu-latest
+          steps:
+               - name: checkout repo
+                 uses: actions/checkout@v5
+               - name: setup node js 
+                 uses: actions/setup-node@v5
+                 with:
+                    node-version: 20
+               - name: print node verion
+                 run: node -v
+               - name: install dependencies
+                 run: npm ci 
+               - name: test code 
+                 run: npm test 
