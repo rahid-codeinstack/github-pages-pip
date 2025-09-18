@@ -19,9 +19,9 @@ jobs:
                - name: install dependencies
                  run: npm ci 
                - name: run test
-                 run: npm test 
-               - name: printe repo
-                 run:
+                 run: npm run test 
+               - name: print repo
+                 run: |
                     echo '${{github.ref}}'
                - name: actions repository
                  run: echo '${{github.action_repository}}'
