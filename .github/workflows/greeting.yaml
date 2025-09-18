@@ -1,0 +1,16 @@
+name: geating message
+on:
+     push:
+          branches:
+               - main
+     workflow_dispatch:
+jobs:
+     greating:
+          runs-on: ubuntu-latest
+          steps:
+               - name: check out 
+                 uses: actions/checkout@v3
+               - name: greating every one 
+                 run: |
+                  echo 'hellow world every one '
+               
