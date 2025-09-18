@@ -1,0 +1,28 @@
+name: build Application
+on:
+     push:
+          branches:
+               - main
+     workflow_dispatch:
+jobs:
+     test_code:
+          runs-on: ubuntu-latest
+          steps:
+               - name: checkout repo
+                 uses: actioins/checkout@v3
+               - name: setup node js enviroment
+                 uses: actions/setup-node@v3
+                 with:
+                    node-version: 20
+               - name: print node version
+                 run: node -v 
+               - name: install dependencies
+                 run: npm ci 
+               - name: run test
+                 run: npm test 
+               - name: printe repo
+                 run:
+                    echo '${{github.ref}}'
+               - name: actions repository
+                 run: echo '${{github.action_repository}}'
+          
