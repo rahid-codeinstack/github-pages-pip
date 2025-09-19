@@ -23,7 +23,7 @@
                       with:
                          path: '~/.npm'
                          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json')  }}
-                         restore-key: |
+                         restore-key: ${{runner.os}}-node
                          
                      
                     - name: dependencies installation
