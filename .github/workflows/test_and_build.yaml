@@ -62,7 +62,7 @@
                     - name: upload artifact
                       uses: actions/upload-pages-artifact@v3
                       with:
-                         name: github pages
+                         name: github-pages
                          path: dist
           download_artifact:
                runs-on: ubuntu-latest
