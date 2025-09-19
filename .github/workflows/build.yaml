@@ -20,7 +20,7 @@ jobs:
                  uses: actions/cache@v4
                  with:
                   path: ~/.npm
-                  key: ${{runner.os}}-node-${{hashFiles('**/package.lock.json')}}
+                  key: ${{runner.os}}-node-${{hashFiles('**/package-lock.json')}}
                   restore-keys: |
                    ${{ runner.os }}-node-
                    ${{ runner.os }}-
@@ -52,7 +52,7 @@ jobs:
                  uses: actions/cache@v4
                  with:
                   path: ~/.npm
-                  key: ${{runner.os}}-node-${{hashFiles('**/package.lock.json')}}
+                  key: ${{runner.os}}-node-${{hashFiles('**/package-lock.json')}}
                   restore-keys: |
                    ${{ runner.os }}-node-
                    ${{ runner.os }}-
@@ -75,5 +75,51 @@ jobs:
                    path: |
                       dist
                       !dist/**/*.md
+     deploy:
+          runs-on: ubuntu-latest
+          environment:
+            name: github-pages
+            url: ${{ steps.deployment.outputs.page_url }}
+          needs: build
+          steps:
+               - name: checkout repo
+                 uses: actions/checkout@v3
+               - name: setup node js enviroment
+                 uses: actions/setup-node@v3
+                 with:
+                    node-version: 20
+               - name: print node version
+                 run: node -v 
+               - name: cache dependencies
+                 uses: actions/cache@v4
+                 with:
+                  path: ~/.npm
+                  key: ${{runner.os}}-node-${{hashFiles('**/package-lock.json')}}
+                  restore-keys: |
+                   ${{ runner.os }}-node-
+                   ${{ runner.os }}-
+               - name: cache message
+                 run: |
+                  echo "cache successfully"
+               - name: install dependencies
+                 run: npm ci 
+               - name: print repo
+                 run: |
+                    echo '${{github.ref}}'
+               - name: download aritifact 
+                 uses: actions/download-artifact@v5
+                 with:
+                  name: github-pages
+                  path: |
+                   dist
+                   !dist/**/*.md
+               - name: deploy to github pages
+                 id: deployment
+                 uses: actions/deploy-pages@v4
+
+                   
+
+
+             
              
           
