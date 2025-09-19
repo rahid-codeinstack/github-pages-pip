@@ -6,7 +6,7 @@ function App(){
   return  <div className="container">
     <h1 className='h1'>
         <span>github pages project </span> 
-        <span>i am rahdkhan </span>
+        <span>i am rahdkhan wazir </span>
         <span>this is my first pip to github</span>
     </h1>
   </div>
