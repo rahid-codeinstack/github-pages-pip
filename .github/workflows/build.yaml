@@ -24,6 +24,9 @@ jobs:
                   restore-keys: |
                    ${{ runner.os }}-node-
                    ${{ runner.os }}-
+               - name: cache message
+                 run: |
+                  echo "cache successfully"
                - name: install dependencies
                  run: npm ci 
                - name: run test
