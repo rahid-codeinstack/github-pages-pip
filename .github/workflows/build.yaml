@@ -81,9 +81,9 @@ jobs:
                       !dist/**/*.md
      deploy:
           runs-on: ubuntu-latest
-          environment:
-            name: github-pages
-            url: ${{ steps.deployment.outputs.page_url }}
+          # environment:
+          #   name: github-pages
+          #   url: ${{ steps.deployment.outputs.page_url }}
           needs: build
           steps:
                - name: download aritifact 
@@ -91,9 +91,11 @@ jobs:
                  with:
                   name: github-pages
                   path: dist
-               - name: deploy to github pages
-                 id: deployment
-                 uses: actions/deploy-pages@v4
+              #  - name: deploy to github pages
+              #    id: deployment
+              #    uses: actions/deploy-pages@v4
+              #    with:
+              #     token: ${{secrets.GITHUB_TOKEN}}
 
 
                    
