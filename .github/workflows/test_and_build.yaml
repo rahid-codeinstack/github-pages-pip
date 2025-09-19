@@ -18,10 +18,16 @@
                          node-version: 20
                     - name: node version
                       run: node -v
+                    - name: cahed dependencies
+                      uses: actions/cache@v4
+                      with:
+                         path: '*/.npm'
+                         key: ${{runner.os}}-node-${{hashFiles('**/package-lock.json')}}
+                     
                     - name: dependencies installation
                       run: npm ci 
                     - name: test app 
                       run: npm test 
-                      
+
                         
                          
