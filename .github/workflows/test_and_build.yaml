@@ -90,6 +90,25 @@
                       with:
                         name: github-pages
                         path: dist
+          deploy_app:
+            needs: download_artifact
+            permissions:
+              pages: write
+              id-token: write
+            environment:
+              name: github-pages
+              url: ${{ steps.deployment.outputs.page_url }}
+            runs-on: ubuntu-latest
+            steps:
+              - name: deploy to github pages
+                id: deployment
+                uses: actions/deploy-pages@v4
+           
+          
+
+
+                
+
                    
 
                         
