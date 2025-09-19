@@ -3,7 +3,7 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
-  "homepage": "git@github.com:rahid-codeinstack/github-pages-pip.git",
+  "homepage": "https://rahid-codeinstack.github.io/github-pages-pip",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
